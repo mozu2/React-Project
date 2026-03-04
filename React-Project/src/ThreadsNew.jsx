@@ -1,11 +1,15 @@
 import { useState } from "react";
 import './ThreadsNew.css';
+import { useNavigate } from "react-router-dom";
+
 
 const ThreadsNew = () => {
+
 
     const [title, setTitle] = useState("");
     const [content, setContent] = useState("");
 
+    const navigate = useNavigate();
 
     const postThread = async (e) => {
         e.preventDefault();
@@ -34,6 +38,7 @@ const ThreadsNew = () => {
             }),
         });
         alert('スレッドを作成しました')
+        navigate('/')
     }
 
 
