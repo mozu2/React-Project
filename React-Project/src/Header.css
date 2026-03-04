@@ -1,0 +1,22 @@
+.Header {
+    display: flex;
+    background-color: aqua;
+    height: 100px;
+    margin-bottom: 100px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.pageTitle {
+    color: #333;
+    font-size: 40px;
+    border-bottom: none;
+    margin: 0 90px;
+}
+
+.create {
+    font-size: 20px;
+    margin: 0 60px;
+
+
+}
