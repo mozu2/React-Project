@@ -1,5 +1,5 @@
 import { useState } from "react";
-
+import './ThreadsNew.css';
 
 const ThreadsNew = () => {
 
@@ -42,16 +42,19 @@ const ThreadsNew = () => {
     return (
         <div>
             <h1>新規スレッドを作成</h1>
-            <form onSubmit={postThread}>
-                <label htmlFor="">タイトル:
-                    <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} />
-                </label>
-                <br />
-                <label htmlFor="">内容：
-                    <textarea name="Content" value={content} rows={5} onChange={(e) => setContent(e.target.value)}></textarea>
-                </label>
-                <button type="submit">登録する</button>
-            </form>
+            <div className="thread">
+                <form onSubmit={postThread}>
+                    <label className="thread-title">タイトル:
+                        <input className="title-info" type="text" value={title} onChange={(e) => setTitle(e.target.value)} />
+                    </label>
+                    <br />
+                    <label htmlFor="">内容
+                        <textarea name="Content" value={content} rows={5} onChange={(e) => setContent(e.target.value)}></textarea>
+                    </label>
+                    <br />
+                    <button type="submit">登録する</button>
+                </form>
+            </div>
         </div>
     );
 }
