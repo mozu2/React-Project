@@ -11,6 +11,7 @@ const Threads = () => {
             const url = 'https://railway.bulletinboard.techtrain.dev/threads';
             const response = await fetch(url);
             const result = await response.json();
+
             setThreads(result);
         };
 

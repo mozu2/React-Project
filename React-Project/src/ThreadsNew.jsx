@@ -14,8 +14,8 @@ const ThreadsNew = () => {
     const postThread = async (e) => {
         e.preventDefault();
 
-        const titleUrl = 'https://railway.bulletinboard.techtrain.dev/threads';
-        const threadResponse = await fetch(titleUrl, {
+
+        const threadResponse = await fetch('https://railway.bulletinboard.techtrain.dev/threads', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -27,8 +27,8 @@ const ThreadsNew = () => {
 
         const threadData = await threadResponse.json();
         const threadId = await threadData.id;
-        const contextUrl = `https://railway.bulletinboard.techtrain.dev/threads/${threadId}/posts`;
-        await fetch(contextUrl, {
+
+        await fetch(`https://railway.bulletinboard.techtrain.dev/threads/${threadId}/posts`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
