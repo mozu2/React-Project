@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import './Threads.css'
+import { Link } from "react-router-dom";
 // @ts-check
+
 
 const Threads = () => {
 
@@ -25,7 +27,10 @@ const Threads = () => {
         <div className="threads">
             {
                 threads.map((thread) => (
-                    <p key={thread.id} className='title'>{thread.title}</p>
+                    <Link to={`/threads/${thread.id}`} key={thread.id} className='title'
+                        state={{ title: thread.title }}>
+                        {thread.title}
+                    </Link>
                 ))
             }
         </div>

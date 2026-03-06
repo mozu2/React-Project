@@ -9,11 +9,11 @@ const ThreadsNew = () => {
     const [title, setTitle] = useState("");
     const [content, setContent] = useState("");
 
+
     const navigate = useNavigate();
 
     const postThread = async (e) => {
         e.preventDefault();
-
 
         const threadResponse = await fetch('https://railway.bulletinboard.techtrain.dev/threads', {
             method: 'POST',
@@ -57,7 +57,8 @@ const ThreadsNew = () => {
                         <textarea name="Content" value={content} rows={5} onChange={(e) => setContent(e.target.value)}></textarea>
                     </label>
                     <br />
-                    <button type="submit">登録する</button>
+                    <button type="submit"
+                        disabled={title.trim() === "" || content.trim() === ""}>登録する</button>
                 </form>
             </div>
         </div>
