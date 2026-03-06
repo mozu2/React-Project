@@ -1,7 +1,10 @@
 .threads {
-    border: 3px solid;
+    border: none;
     max-width: 1280px;
     margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
 }
 
 
@@ -13,6 +16,9 @@
     border-bottom: 1px solid;
     padding: 12px 18px;
     transition: background-color 0.5s;
+    margin-bottom: 10px;
+    border: 1px solid #ffffff;
+    border-radius: 8px;
 }
 
 .threads .title:hover {
@@ -23,4 +29,5 @@
 
 .threads .title:last-child {
     border-bottom: none;
+    margin-bottom: 0;
 }
