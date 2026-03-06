@@ -15,7 +15,8 @@ const ThreadPostList = () => {
     const [threadPost, setThreadPost] = useState([]);
     const { thread_id } = useParams();
     const location = useLocation();
-    const threadTitle = location.state?.title
+    const searchParam = new URLSearchParams(location.search);
+    const threadTitle = searchParam.get("title");
 
 
 
