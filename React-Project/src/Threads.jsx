@@ -7,8 +7,8 @@ import { Link, useSearchParams } from "react-router-dom";
 const Threads = () => {
 
     const [threads, setThreads] = useState([]);
-    const [searchParams, setSearchParams] = useSearchParams();
     //URLのoffset取得用
+    const [searchParams, setSearchParams] = useSearchParams();
     const offset = Number(searchParams.get("offset")) || 0;
     //ページ数
     const count = (offset / 10) + 1;
@@ -42,7 +42,7 @@ const Threads = () => {
             {
                 threads.map((thread) => (
                     <Link to={`/threads/${thread.id}?title=${thread.title}`} key={thread.id} className='title'
-                        state={{ title: thread.title }}>
+                    >
                         {thread.title}
                     </Link>
                 ))
