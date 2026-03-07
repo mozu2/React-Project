@@ -1,13 +1,17 @@
 import { useEffect, useState } from "react";
 import './Threads.css'
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 // @ts-check
 
 
 const Threads = () => {
 
     const [threads, setThreads] = useState([]);
-    const [offset, setOffset] = useState(0);
+    const [searchParams, setSearchParams] = useSearchParams();
+    //URLのoffset取得用
+    const offset = Number(searchParams.get("offset")) || 0;
+    //ページ数
+    const count = (offset / 10) + 1;
 
     useEffect(() => {
         const getThreads = async () => {
@@ -19,13 +23,22 @@ const Threads = () => {
         };
 
         getThreads();
+        window.scrollTo(0, 0);
 
     }, [offset]);
 
 
 
+    const clickOffset = (newOffset) => {
+        setSearchParams({ offset: newOffset });
+    }
+
+
     return (
         <div className="threads">
+            <button onClick={() => clickOffset(0)} className="latestButton">
+                最新ページへ
+            </button>
             {
                 threads.map((thread) => (
                     <Link to={`/threads/${thread.id}?title=${thread.title}`} key={thread.id} className='title'
@@ -34,18 +47,20 @@ const Threads = () => {
                     </Link>
                 ))
             }
-
-            <button onClick={() => setOffset(prev => prev = 0)}>
-                最新
-            </button>
-            <button onClick={() => setOffset(prev => Math.max(0, prev - 10))} disabled={offset === 0}>
-                前に
-            </button>
-            <button onClick={() => setOffset(prev => prev + 10)}>
-                次に
-            </button>
-            <p>{offset}</p>
-        </div>
+            <div className="pagesButton">
+                <button onClick={() => {
+                    clickOffset(Math.max(0, offset - 10));
+                }} disabled={offset === 0}>
+                    前に
+                </button>
+                <button onClick={() => {
+                    clickOffset(offset + 10);
+                }}>
+                    次に
+                </button>
+            </div>
+            <p className="pages">{count} ページ</p>
+        </div >
     );
 }
 

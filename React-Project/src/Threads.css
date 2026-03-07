@@ -31,3 +31,23 @@
     border-bottom: none;
     margin-bottom: 0;
 }
+
+.pages {
+    font-size: 20px;
+}
+
+.pagesButton {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+
+}
+
+.pagesButton button {
+    font-size: 20px;
+}
+
+.latestButton {
+    font-size: 20px;
+    margin-bottom: 20px;
+}
