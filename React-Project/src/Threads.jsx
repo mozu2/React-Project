@@ -15,11 +15,15 @@ const Threads = () => {
 
     useEffect(() => {
         const getThreads = async () => {
-            const url = `https://railway.bulletinboard.techtrain.dev/threads?offset=${offset}`;
-            const response = await fetch(url);
-            const result = await response.json();
+            try {
 
-            setThreads(result);
+                const url = `https://railway.bulletinboard.techtrain.dev/threads?offset=${offset}`;
+                const response = await fetch(url);
+                const result = await response.json();
+                setThreads(result);
+            } catch (error) {
+                alert('取得に失敗しました。')
+            }
         };
 
         getThreads();

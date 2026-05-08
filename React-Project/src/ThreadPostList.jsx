@@ -13,6 +13,7 @@ const ThreadPostList = () => {
 
     //スレッド内投稿一覧用
     const [threadPost, setThreadPost] = useState([]);
+
     const { thread_id } = useParams();
     const location = useLocation();
     const searchParam = new URLSearchParams(location.search);
@@ -27,7 +28,7 @@ const ThreadPostList = () => {
             const result = await response.json();
             setThreadPost(result.posts);
         } catch (error) {
-            console.log('エラーが出て');
+            console.log('エラーです');
         } finally {
             setLoad(false);
         };
@@ -42,17 +43,22 @@ const ThreadPostList = () => {
     //投稿用
     const PostThread = async (e) => {
         e.preventDefault();
-        await fetch(`https://railway.bulletinboard.techtrain.dev/threads/${thread_id}/posts`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                post: thread,
-            }),
-        });
-        setThread("");
-        getThread();
+        try {
+
+            await fetch(`https://railway.bulletinboard.techtrain.dev/threads/${thread_id}/posts`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    post: thread,
+                }),
+            });
+            setThread("");
+            getThread();
+        } catch (error) {
+            alert('投稿に失敗しました。')
+        }
     };
 
     return (
